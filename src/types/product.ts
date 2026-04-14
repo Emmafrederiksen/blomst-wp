@@ -1,7 +1,10 @@
 export type Product = {
     id: number
     name: string
-    price: string
+    prices: {
+        price: string
+        currency_minor_unit: number
+    }
     short_description: string
     images: {
         src: string

@@ -1,14 +1,31 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-:root {
-  --hero-gradient: linear-gradient(to right, #C98086, #FFFFFF);
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    './src/**/*.{js,ts,jsx,tsx,mdx}',
+  ],
+  theme: {
+    extend: {
+      colors: {
+        brand: {
+          primary: '#4E0C0C',  // bg-brand-primary / text-brand-primary
+          white:   '#FFFFFF',  // text-brand-white
+          dark:    '#222222',  // text-brand-dark
+          muted:   '#888888',  // text-brand-muted
+        }
+      },
+      borderRadius: {
+        card: '12px',    // rounded-card
+        pill: '9999px',  // rounded-pill
+      },
+      fontFamily: {
+        sans:  ['var(--font-sans)', 'sans-serif'],   // font-sans → DM Sans
+        serif: ['var(--font-serif)', 'serif'],        // font-serif → DM Serif Display
+      }
+    },
+  },
+  plugins: [],
 }
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-}
 
 /*
 |--------------------------------------------------------------------------
