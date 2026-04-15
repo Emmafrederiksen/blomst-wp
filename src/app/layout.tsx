@@ -2,6 +2,8 @@ import type { Metadata } from "next"
 import { DM_Sans, DM_Serif_Display } from "next/font/google"
 import "./globals.css"
 import NavBar from "@/layout/Navbar"
+import { CartProvider } from "@/context/CartContext"
+import SlideCart from "@/components/cart/SlideCart"
 
 // DM Sans — bruges til brødtekst og UI elementer
 const dmSans = DM_Sans({
@@ -26,8 +28,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="da">
       <body className={`${dmSans.variable} ${dmSerif.variable}`}>
-        <NavBar/>
-        {children}
+        {/* CartProvider wrapper alt indhold så kurven er tilgængelig overalt */}
+        <CartProvider>
+          <NavBar/>
+          {children}
+          {/* SlideCart ligger udenfor {children} så den vises på alle sider */}
+          <SlideCart />
+        </CartProvider>
       </body>
     </html>
   )
