@@ -14,6 +14,7 @@ export default function HomePage() {
       .then(data => setProducts(data))
   }, [])
 
+
   return (
     <main>
       <Container>
@@ -22,6 +23,7 @@ export default function HomePage() {
             Populære buketter
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+             
             {products.map((product) => (
               <ProductCard
                 key={product.id}
@@ -29,6 +31,7 @@ export default function HomePage() {
                 onAddToCart={(p) => console.log("Tilføjet:", p.name)}
               />
             ))}
+            
           </div>
         </section>
       </Container>
