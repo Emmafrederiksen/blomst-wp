@@ -26,24 +26,27 @@ export default function NavBar() {
   ];
 
   return (
-    <nav className="bg-brand-primary">
+    <nav className="bg-brand-primary shadow-lg">
       <Container>
         <div className="flex items-center justify-between py-4">
           {/* Venstre side */}
-          <div className="flex items-center gap-3">
-            <Image src={logo} alt="Blomst logo" className="w-14 h-auto" />
-            <h1 className="text-brand-white text-h2 font-serif">Blomst</h1>
-          </div>
+          <Link href="/" className="flex items-center gap-3 hover:opacity-90 transition-opacity duration-200">
+            <Image src={logo} alt="Blomst logo" className="w-12 h-auto" />
+            <span className="text-brand-white text-h2 font-serif">Blomst</span>
+          </Link>
 
           {/* Højre side */}
-          <ul className="flex items-center gap-6 text-brand-white font-sans">
+          <ul className="flex items-center gap-8 font-sans">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className={`py-3 block ${
-                    pathname === link.href ? "font-bold" : "font-normal"
-                  }`}
+                  className={` text-brand-white text-body pb-1 border-b-2 transition-all duration-200 ${
+                    pathname === link.href 
+                    ? "border-brand-white font-bold" 
+                    : "border-transparent font-normal hover:border-brand-white/50"
+                  }`
+                }
                 >
                   {link.name}
                 </Link>
@@ -54,13 +57,13 @@ export default function NavBar() {
             <li>
               <button
                 onClick={openCart}
-                className="flex items-center gap-2 bg-brand-white text-brand-dark font-medium px-6 py-3 rounded-full hover:opacity-90 active:scale-95 transition-all duration-200 whitespace-nowrap relative"
+                className="flex items-center gap-2 bg-brand-white text-brand-dark font-sans text-body font-medium px-5 py-2.5 rounded-pill hover:opacity-90 active:scale-95 transition-all duration-200 whitespace-nowrap relative"
               >
                 <ShoppingCart className="w-5 h-5" />
                 Kurv
-                {/* Badge — vises kun når mounted OG der er varer i kurven */}
+                {/* Badge – vises kun når mounted OG der er varer i kurven */}
                 {mounted && totalItems > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-brand-primary text-brand-white text-xs font-medium w-6 h-6 rounded-full flex items-center justify-center border-2 border-brand-white">
+                  <span className="absolute -top-1 -right-1 bg-brand-primary text-brand-white text-xs font-medium w-6 h-6 rounded-pill flex items-center justify-center border-2 border-brand-white">
                     {totalItems}
                   </span>
                 )}
