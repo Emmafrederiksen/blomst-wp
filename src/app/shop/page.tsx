@@ -85,4 +85,3 @@ export default function ShopPage() {
             </Container>
         </main>
     )
-}

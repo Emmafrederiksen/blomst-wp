@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { DM_Sans, DM_Serif_Display } from "next/font/google"
 import "./globals.css"
+import NavBar from "@/layout/Navbar"
 
 // DM Sans – bruges til brødtekst og UI elementer
 const dmSans = DM_Sans({
@@ -25,6 +26,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="da">
       <body className={`${dmSans.variable} ${dmSerif.variable}`}>
+        <NavBar/>
         {children}
       </body>
     </html>

@@ -14,14 +14,16 @@ export default function HomePage() {
       .then(data => setProducts(data))
   }, [])
 
+
   return (
     <main>
       <Container>
         <section className="py-14">
-          <h2 className="text-2xl font-bold text-brand-primary mb-8">
+          <h2 className="text-h2 font-bold text-brand-primary mb-8">
             Populære buketter
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+             
             {products.map((product) => (
               <ProductCard
                 key={product.id}
@@ -29,6 +31,7 @@ export default function HomePage() {
                 onAddToCart={(p) => console.log("Tilføjet:", p.name)}
               />
             ))}
+            
           </div>
         </section>
       </Container>
