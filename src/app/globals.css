@@ -36,3 +36,15 @@ body {
 | rounded-pill          → 9999px — bruges i: knapper, kategori-pills
 |
 */
+
+/*
+| TEKSTSTØRRELSER (responsive med clamp)
+| text-label   → kategori-labels
+| text-body-sm → beskrivelser og hjælpetekst  
+| text-body    → brødtekst
+| text-ui      → UI elementer og knapper
+| text-h3      → produktnavne og kort-overskrifter
+| text-h2      → sektion overskrifter
+| text-h1      → side overskrifter
+| text-hero    → hero overskrift (font-serif)
+*/
