@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react"
 import ProductCard from "@/components/products/ProductCard"
 import CategoryFilter from "@/components/shop/CategoryFilter"
+import SortSelect from "@/components/shop/SortSelect"
 import Container from "@/layout/Container"
 import { Product } from "@/types/product"
 import { Category } from "@/types/category"
@@ -12,11 +13,14 @@ export default function ShopPage() {
     // Gemmer ALLE produkter — ændres aldrig efter første load
     const [allProducts, setAllProducts] = useState<Product[]>([])
 
-    // Gemmer alle kategorier til filter-pills
+    // Gemmer alle kategorier til filter-btns
     const [categories, setCategories] = useState<Category[]>([])
 
     // Hvilken kategori er aktiv? null = Alle
     const [activeCategory, setActiveCategory] = useState<number | null>(null)
+
+    // Hvilken sortering er aktiv? default = ingen sortering
+    const [activeSort, setActiveSort] = useState("price-asc")
 
     // Styrer om "Henter blomster..." vises
     const [loading, setLoading] = useState(true)
@@ -34,47 +38,70 @@ export default function ShopPage() {
         })
     }, [])
 
-    // BEREGNING — ingen useState, ingen fetch
-    // Udregnes automatisk hver gang activeCategory ændrer sig
+    // BEREGNING 1 — filtrer produkter efter aktiv kategori
     // activeCategory er null → vis alle
-    // activeCategory er et ID → filtrer produkterne
-    // .filter() beholder kun produkter hvor betingelsen er sand
-    // .some() tjekker om mindst én kategori på produktet matcher ID'et
+    // activeCategory er et ID → filtrer med .filter() og .some()
     const filteredProducts = activeCategory
         ? allProducts.filter(p => p.categories.some(c => c.id === activeCategory))
         : allProducts
+
+    // BEREGNING 2 — sortér de filtrerede produkter
+    // [...filteredProducts] laver en kopi så vi ikke ændrer originalen
+    // .sort() sammenligner to produkter ad gangen og bestemmer rækkefølgen
+    const sortedProducts = [...filteredProducts].sort((a, b) => {
+        if (activeSort === "price-asc") {
+            // Lav til høj – mindste pris først
+            return Number(a.prices.price) - Number(b.prices.price)
+        }
+        if (activeSort === "price-desc") {
+            // Høj til lav – største pris først
+            return Number(b.prices.price) - Number(a.prices.price)
+        }
+        // default – behold original rækkefølge
+        return 0
+    })
 
     return (
         <main>
             <Container>
                 <section className="py-14">
 
-                    {/* Kategori-pills — activeCategory styrer hvilken der er aktiv
-                        onCategoryChange opdaterer activeCategory når bruger trykker */}
-                    <CategoryFilter
-                        categories={categories}
-                        activeCategory={activeCategory}
-                        onCategoryChange={setActiveCategory}
-                    />
+                    {/* Toolbar – staplet på mobil, side om side på desktop */}
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+                        
+                        {/* Kategori-btn */}
+                        <CategoryFilter
+                            categories={categories}
+                            activeCategory={activeCategory}
+                            onCategoryChange={setActiveCategory}
+                        />
 
-                    {/* Viser antal produkter i den aktuelle filtrering */}
+                        {/* Sortering – ligger under kategori-btn på mobil, til højre på desktop */}
+                        <div className="flex items-center gap-3 shrink-0">
+                            <SortSelect
+                                value={activeSort}
+                                onChange={setActiveSort}
+                            />
+                        </div>
+
+                    </div>
+
+                    {/* Antal produkter */}
                     <p className="font-sans text-body-sm text-brand-muted mb-6">
-                        Viser {filteredProducts.length} buketter
+                        Viser {sortedProducts.length} buketter
                     </p>
 
-                    {/* Ternary — loading true → vis tekst, loading false → vis produkter */}
+                    {/* Produktgrid */}
                     {loading ? (
                         <p className="font-sans text-body text-brand-muted">
                             Henter blomster...
                         </p>
                     ) : (
-                        // Grid — responsive: 1 kolonne mobil, 2 tablet, 3 desktop
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                            {/* .map() laver et ProductCard for hvert produkt i filteredProducts */}
-                            {filteredProducts.map((product) => (
+                            {sortedProducts.map((product) => (
                                 <ProductCard
-                                    key={product.id}      // unikt ID så React kan holde styr på kortene
-                                    product={product}     // sender produktdata ind i kortet
+                                    key={product.id}
+                                    product={product}
                                     onAddToCart={(p) => console.log("Tilføjet:", p.name)}
                                 />
                             ))}
