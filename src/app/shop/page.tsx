@@ -7,6 +7,7 @@ import SortSelect from "@/components/shop/SortSelect"
 import Container from "@/layout/Container"
 import { Product } from "@/types/product"
 import { Category } from "@/types/category"
+import ProductCardSkeleton from "@/components/products/ProductCardSkeleton"
 
 export default function ShopPage() {
 
@@ -93,9 +94,12 @@ export default function ShopPage() {
 
                     {/* Produktgrid */}
                     {loading ? (
-                        <p className="font-sans text-body text-brand-muted">
-                            Henter blomster...
-                        </p>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                            {/* Vis 6 skeletons mens produkterne hentes */}
+                            {Array.from({ length: 6 }).map((_, i) => (
+                                <ProductCardSkeleton key={i} />
+                            ))}
+                        </div>
                     ) : (
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                             {sortedProducts.map((product) => (
