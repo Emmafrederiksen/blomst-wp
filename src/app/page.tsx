@@ -28,7 +28,6 @@ export default function HomePage() {
               <ProductCard
                 key={product.id}
                 product={product}
-                onAddToCart={(p) => console.log("Tilføjet:", p.name)}
               />
             ))}
             

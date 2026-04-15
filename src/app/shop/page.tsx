@@ -102,7 +102,6 @@ export default function ShopPage() {
                                 <ProductCard
                                     key={product.id}
                                     product={product}
-                                    onAddToCart={(p) => console.log("Tilføjet:", p.name)}
                                 />
                             ))}
                         </div>
