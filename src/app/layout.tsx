@@ -3,14 +3,14 @@ import { DM_Sans, DM_Serif_Display } from "next/font/google"
 import "./globals.css"
 import NavBar from "@/layout/Navbar"
 
-// DM Sans — bruges til brødtekst og UI elementer
+// DM Sans – bruges til brødtekst og UI elementer
 const dmSans = DM_Sans({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   variable: "--font-sans",
 })
 
-// DM Serif Display — bruges til elegante overskrifter
+// DM Serif Display – bruges til overskrifter
 const dmSerif = DM_Serif_Display({
   subsets: ["latin"],
   weight: "400",
