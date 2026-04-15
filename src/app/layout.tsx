@@ -4,6 +4,7 @@ import "./globals.css"
 import NavBar from "@/layout/Navbar"
 import { CartProvider } from "@/context/CartContext"
 import SlideCart from "@/components/cart/SlideCart"
+import { ProductProvider } from "@/context/ProductContext"
 
 // DM Sans — bruges til brødtekst og UI elementer
 const dmSans = DM_Sans({
@@ -30,10 +31,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={`${dmSans.variable} ${dmSerif.variable}`}>
         {/* CartProvider wrapper alt indhold så kurven er tilgængelig overalt */}
         <CartProvider>
-          <NavBar/>
-          {children}
-          {/* SlideCart ligger udenfor {children} så den vises på alle sider */}
-          <SlideCart />
+          <ProductProvider>
+            <NavBar/>
+            {children}
+            <SlideCart/>
+          </ProductProvider>
         </CartProvider>
       </body>
     </html>
