@@ -39,31 +39,31 @@ export default function ProductCard({ product, onAddToCart }: Props) {
 
                 {/* Kategori-label */}
                 {category && (
-                    <span className="font-sans text-xs font-medium tracking-widest text-brand-primary uppercase mb-2">
+                    <span className="font-sans text-label font-medium tracking-widest text-brand-primary uppercase mb-2">
                         {category}
                     </span>
                 )}
 
                 {/* Produktnavn */}
-                <h3 className="font-sans text-base font-medium text-brand-dark mb-1">
+                <h3 className="font-sans text-h3 font-medium text-brand-dark mb-1">
                     {product.name}
                 </h3>
 
                 {/* Beskrivelse — flex-1 pusher knap og pris til bunden */}
-                <p className="font-sans text-sm text-brand-muted line-clamp-2 flex-1 mb-6">
+                <p className="font-sans text-body-sm text-brand-muted line-clamp-2 flex-1 mb-6">
                     {description}
                 </p>
 
                 {/* Pris og kurv-knap */}
                 <div className="flex items-center justify-between">
-                    <span className="font-sans text-base font-medium text-brand-dark">
+                    <span className="font-sans text-ui font-medium text-brand-dark">
                         {(Number(product.prices.price) / Math.pow(10, product.prices.currency_minor_unit)).toLocaleString("da-DK")} kr.
                     </span>
                     {/* cursor-pointer */}
                     <button
                         type="button"
                         onClick={() => onAddToCart(product)}
-                        className="cursor-pointer bg-brand-primary text-brand-white font-sans text-sm font-medium px-6 py-3 rounded-full hover:opacity-90 active:scale-95 transition-all duration-200 whitespace-nowrap"
+                        className="cursor-pointer bg-brand-primary text-brand-white font-sans text-ui font-medium px-6 py-3 rounded-full hover:opacity-90 active:scale-95 transition-all duration-200 whitespace-nowrap"
                     >
                         Tilføj til kurv
                     </button>
