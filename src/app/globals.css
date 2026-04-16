@@ -6,10 +6,6 @@
   --hero-gradient: linear-gradient(to right, #C98086, #FFFFFF);
 }
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-}
-
 /*
 |--------------------------------------------------------------------------
 | Tailwind cheatsheet — brandfarver og utilities
