@@ -1,8 +1,11 @@
-import type { Metadata } from "next";
-import { DM_Sans, DM_Serif_Display } from "next/font/google";
-import "./globals.css";
+import type { Metadata } from "next"
+import { DM_Sans, DM_Serif_Display } from "next/font/google"
+import "./globals.css"
 import NavBar from "@/layout/Navbar";
 import Footer from "@/layout/Footer";
+import { CartProvider } from "@/context/CartContext"
+import SlideCart from "@/components/cart/SlideCart"
+import { ProductProvider } from "@/context/ProductContext"
 
 // DM Sans — bruges til brødtekst og UI elementer
 const dmSans = DM_Sans({
@@ -30,12 +33,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="da">
-      <body
-        className={`${dmSans.variable} ${dmSerif.variable} min-h-screen flex flex-col`}
-      >
-        <NavBar />
-        <main className="flex-1">{children}</main>
-        <Footer />
+      <body className={`${dmSans.variable} ${dmSerif.variable}`}>
+        {/* CartProvider wrapper alt indhold så kurven er tilgængelig overalt */}
+        <CartProvider>
+          <ProductProvider>
+            <NavBar/>
+            <main className="flex-1">{children}</main>
+            <Footer />
+            <SlideCart/>
+          </ProductProvider>
+        </CartProvider>
       </body>
     </html>
   );

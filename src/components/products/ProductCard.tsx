@@ -1,13 +1,13 @@
 "use client"
 
 import { Product } from "@/types/product"
+import { useCart } from "@/context/CartContext"
 
 type Props = {
     product: Product
-    onAddToCart: (product: Product) => void
 }
 
-export default function ProductCard({ product, onAddToCart }: Props) {
+export default function ProductCard({ product}: Props) {
 
     // WooCommerce sender et array af billeder — vi bruger kun det første
     const image = product.images[0]
@@ -19,6 +19,8 @@ export default function ProductCard({ product, onAddToCart }: Props) {
     // WooCommerce sender beskrivelsen med HTML-tags som <p> og <br>
     // .replace() fjerner alle HTML-tags så vi kun får ren tekst
     const description = product.short_description.replace(/<[^>]*>/g, "")
+
+    const { addToCart } = useCart()
 
     return (
         <div className="bg-white rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden flex flex-col">
@@ -62,7 +64,14 @@ export default function ProductCard({ product, onAddToCart }: Props) {
                     {/* cursor-pointer */}
                     <button
                         type="button"
-                        onClick={() => onAddToCart(product)}
+                        onClick={() => addToCart({
+                            product_id: product.id,
+                            name: product.name,
+                            // Prisen gemmes i øre — fx 16900 = 169 kr.
+                            price: Number(product.prices.price),
+                            image: product.images[0]?.src ?? "",
+                            quantity: 1
+                        })}
                         className="cursor-pointer bg-brand-primary text-brand-white font-sans text-ui font-medium px-6 py-3 rounded-full hover:opacity-90 active:scale-95 transition-all duration-200 whitespace-nowrap"
                     >
                         Tilføj til kurv
