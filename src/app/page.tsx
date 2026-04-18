@@ -6,6 +6,7 @@ import ProductCardSkeleton from "@/components/products/ProductCardSkeleton"
 import { useProducts } from "@/context/ProductContext"
 import HeroSection from "@/components/homepage/HeroSection"
 import BenefitsSection from "@/components/homepage/BenefitsSection"
+import CallToActionSection from "@/components/homepage/CallToActionSection"
 
 export default function HomePage() {
   
@@ -42,6 +43,9 @@ export default function HomePage() {
             </div>
           )}
         </section>
+
+        <CallToActionSection />
+        
       </Container>
     </main>
   )
