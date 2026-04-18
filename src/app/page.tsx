@@ -4,6 +4,7 @@ import ProductCard from "@/components/products/ProductCard"
 import Container from "@/layout/Container"
 import ProductCardSkeleton from "@/components/products/ProductCardSkeleton"
 import { useProducts } from "@/context/ProductContext"
+import HeroSection from "@/components/homepage/HeroSection"
 
 export default function HomePage() {
   
@@ -11,6 +12,8 @@ export default function HomePage() {
 
   return (
     <main>
+      <HeroSection />
+
       <Container>
         <section className="py-14">
           <h2 className="text-h2 font-bold text-brand-primary mb-8">
