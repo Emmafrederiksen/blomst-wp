@@ -5,6 +5,7 @@ import Container from "@/layout/Container"
 import ProductCardSkeleton from "@/components/products/ProductCardSkeleton"
 import { useProducts } from "@/context/ProductContext"
 import HeroSection from "@/components/homepage/HeroSection"
+import BenefitsSection from "@/components/homepage/BenefitsSection"
 
 export default function HomePage() {
   
@@ -15,6 +16,9 @@ export default function HomePage() {
       <HeroSection />
 
       <Container>
+
+        <BenefitsSection />
+
         <section className="py-14">
           <h2 className="text-h2 font-bold text-brand-primary mb-8">
             Populære buketter
