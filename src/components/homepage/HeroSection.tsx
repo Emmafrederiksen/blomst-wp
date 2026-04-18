@@ -44,7 +44,7 @@ export default function HeroSection () {
                             <img
                             src="/images/hero_img.jpg"
                             alt="Farverig blomsterbuket holdt i hånden"
-                            className="w-full h-full object-cover"
+                            className="w-full h-full object-cover rounded-card shadow"
                             />
                         </div>
                     </div>
