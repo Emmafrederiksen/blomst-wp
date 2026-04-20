@@ -25,7 +25,7 @@ export default function CategoryFilter({ categories, activeCategory, onCategoryC
                     }
                 `}
             >
-                Alle
+                ALLE
             </button>
 
             {categories.map((cat) => (

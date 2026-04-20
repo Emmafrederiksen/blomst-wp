@@ -7,10 +7,10 @@ export default function CallToActionSection() {
       {/* Tekst */}
       <div className="space-y-6 max-w-xl">
         <h2 className="text-hero text-brand-primary">
-          Langt væk fra dem du <br /> holder af?
+          Langt væk fra dem du <br /> holder af ?
         </h2>
 
-        <p className="text-body text-brand-primary max-w-[64ch]">
+        <p className="text-body text-brand-dark max-w-[64ch]">
           Med Blomst. kan du sende en buket direkte til deres dør – uanset om de bor i Aarhus, Odense 
           eller helt i Sverige. Bestil på under 2 minutter.
         </p>

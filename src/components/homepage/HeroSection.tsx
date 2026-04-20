@@ -18,7 +18,7 @@ export default function HeroSection () {
                                 Send kærlighed, <br />uanset afstanden
                             </h1>
 
-                            <p className="text-brand-primary text-body max-w-[46ch]">
+                            <p className="text-brand-dark text-body max-w-[46ch]">
                                 Vælg en buket, angiv en adresse – så klarer vi resten. 
                                 Perfekt til dig der vil overraske en du holder af, selvom du er langt væk.
                             </p>
@@ -32,7 +32,7 @@ export default function HeroSection () {
                                 Se alle buketter
                             </Link>
 
-                            <button className="cursor-pointer bg-brand-white border border-brand-primary text-brand-primary font-sans text-ui font-medium px-6 py-3 rounded-full hover:opacity-90 active:scale-95 transition-all duration-200 whitespace-nowrap shadow">
+                            <button className="cursor-pointer bg-brand-white border border-brand-primary text-brand-dark font-sans text-ui font-medium px-6 py-3 rounded-full hover:opacity-90 active:scale-95 transition-all duration-200 whitespace-nowrap shadow">
                                 Vælg efter anledning
                             </button>
                         </div>  
