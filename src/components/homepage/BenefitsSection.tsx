@@ -6,7 +6,7 @@ export default function BenefitsSection() {
     
     {/*Mobil version – elementer stablet med vandrette streger */}
       <div className="flex flex-col sm:hidden">
-        <div className="flex flex-col items-start gap-3 py-6 text-center">
+        <div className="flex flex-col items-center gap-3 py-6 text-center">
           <Clock3 className="h-8 w-8 text-brand-primary" />
           <div className="flex flex-col items-center">
             <h3 className="text-h3 font-semibold text-brand-primary">Samme-dag levering</h3>
@@ -18,7 +18,7 @@ export default function BenefitsSection() {
 
         <div className="mx-auto h-px w-[280px] bg-brand-primary/30" />
 
-        <div className="flex flex-col items-start gap-3 py-6 text-center">
+        <div className="flex flex-col items-center gap-3 py-6 text-center">
           <Gift className="h-8 w-8 text-brand-primary" />
           <div className="flex flex-col items-center">
             <h3 className="text-h3 font-semibold text-brand-primary">Gratis indpakning</h3>
@@ -30,7 +30,7 @@ export default function BenefitsSection() {
 
         <div className="mx-auto h-px w-[280px] bg-brand-primary/30" />
 
-        <div className="flex flex-col items-start gap-3 py-6 text-center">
+        <div className="flex flex-col items-center gap-3 py-6 text-center">
           <Truck className="h-8 w-8 text-brand-primary" />
           <div className="flex flex-col items-center">
             <h3 className="text-h3 font-semibold text-brand-primary">Levering kun 79 kr.</h3>

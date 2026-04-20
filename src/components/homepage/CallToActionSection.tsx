@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function CallToActionSection() {
   return (
-    <section className="gradient-bg shadow py-16 px-6 mt-24 mb-24 rounded-card flex flex-col gap-10 sm:flex-row sm:items-center sm:justify-between sm:text-left sm:px-12 lg:px-24">
+    <section className="bg-hero-gradient shadow py-16 px-6 mt-24 mb-24 rounded-card flex flex-col gap-10 sm:flex-row sm:items-center sm:justify-between sm:text-left sm:px-12 lg:px-24">
       
       {/* Tekst */}
       <div className="space-y-6 max-w-xl">
