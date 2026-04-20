@@ -14,6 +14,11 @@ module.exports = {
         }
       },
 
+      backgroundImage: {
+        // Gradient til hero sektioner — bruges som: bg-hero-gradient
+        'hero-gradient': 'linear-gradient(to right, #C98086, #FFFFFF)',
+      },
+
       borderRadius: {
         card: '12px',    // rounded-card
         pill: '9999px',  // rounded-pill

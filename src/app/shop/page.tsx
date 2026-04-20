@@ -41,6 +41,20 @@ export default function ShopPage() {
 
     return (
         <main>
+            
+            {/* Hero */}
+            <div className="bg-hero-gradient py-16 px-6">
+                <Container>
+                    <h1 className="font-serif text-h1 text-brand-primary mb-2">
+                        Alle buketter
+                    </h1>
+                    <p className="font-sans text-body text-brand-dark max-w-sm">
+                        Håndplukkede buketter til enhver andledning – vælg kategori eller filtrér efter pris
+                    </p>
+                </Container>    
+            </div>
+                
+
             <Container>
                 <section className="py-14">
 
