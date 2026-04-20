@@ -26,8 +26,9 @@ export function ProductProvider({ children }: { children: React.ReactNode }) {
             fetch('/api/products').then(res => res.json()),
             fetch('/api/categories').then(res => res.json())
         ]).then(([productsData, categoriesData]) => {
-            setProducts(productsData)
-            setCategories(categoriesData)
+            // Sikrer at vi altid får et array — selv hvis API'et returnerer noget andet
+            setProducts(Array.isArray(productsData) ? productsData : [])
+            setCategories(Array.isArray(categoriesData) ? categoriesData : [])
             setLoading(false)
         })
     }, [])

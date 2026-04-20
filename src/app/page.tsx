@@ -4,6 +4,9 @@ import ProductCard from "@/components/products/ProductCard"
 import Container from "@/layout/Container"
 import ProductCardSkeleton from "@/components/products/ProductCardSkeleton"
 import { useProducts } from "@/context/ProductContext"
+import HeroSection from "@/components/homepage/HeroSection"
+import BenefitsSection from "@/components/homepage/BenefitsSection"
+import CallToActionSection from "@/components/homepage/CallToActionSection"
 
 export default function HomePage() {
   
@@ -11,7 +14,12 @@ export default function HomePage() {
 
   return (
     <main>
+      <HeroSection />
+
       <Container>
+
+        <BenefitsSection />
+
         <section className="py-14">
           <h2 className="text-h2 font-bold text-brand-primary mb-8">
             Populære buketter
@@ -35,6 +43,9 @@ export default function HomePage() {
             </div>
           )}
         </section>
+
+        <CallToActionSection />
+        
       </Container>
     </main>
   )
