@@ -6,9 +6,6 @@
   --hero-gradient: linear-gradient(to right, #C98086, #FFFFFF);
 }
 
-.gradient-bg {
-  background: var(--hero-gradient);
-}
 
 /*
 |--------------------------------------------------------------------------
