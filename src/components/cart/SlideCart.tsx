@@ -6,10 +6,13 @@ import { useCart } from "@/context/CartContext"
 import { useMounted } from "@/hooks/useMounted"
 import { X, Trash2 } from "lucide-react"
 import ConfirmDialog from "@/components/cart/ConfirmDialog"
+import OrderSuccess from "@/components/cart/OrderSuccess"
 
 export default function SlideCart() {
 
-    const { cart, isOpen, closeCart, removeFromCart, updateQuantity } = useCart()
+    const { cart, isOpen, closeCart, removeFromCart, updateQuantity, clearCart } = useCart()
+
+    const [orderSuccess, setOrderSuccess] = useState(false)
 
     // Styrer hvilken produkt confirm dialogen er åben for
     const [confirmId, setConfirmId] = useState<number | null>(null)
@@ -166,7 +169,10 @@ export default function SlideCart() {
                                 <span>{total.toLocaleString("da-DK")} kr.</span>
                             </div>
 
-                            <button className="w-full bg-brand-primary text-brand-white font-sans text-body-sm font-medium py-4 rounded-pill hover:opacity-90 transition-opacity duration-200 mt-2">
+                            <button
+                                onClick={() => setOrderSuccess(true)}
+                                className="w-full bg-brand-primary text-brand-white font-sans text-body-sm font-medium py-4 rounded-pill hover:opacity-90 transition-opacity duration-200 mt-2"
+                            >
                                 Bestil nu
                             </button>
 
@@ -186,6 +192,17 @@ export default function SlideCart() {
                     setConfirmId(null)
                 }}
                 onCancel={() => setConfirmId(null)}
+            />
+
+
+            {/* OrderSuccess – udenfor slide-kurven så den centrerer på hele skærmen */}
+            <OrderSuccess
+                isOpen={orderSuccess}
+                onClose={() => {
+                    setOrderSuccess(false)
+                    clearCart()
+                    closeCart()
+                }}
             />
 
         </>

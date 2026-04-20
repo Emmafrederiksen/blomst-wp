@@ -6,6 +6,28 @@
   --hero-gradient: linear-gradient(to right, #C98086, #FFFFFF);
 }
 
+
+/* Animationer */
+@keyframes fade-in {
+    from { opacity: 0; transform: translate(-50%, -48%) scale(0.96); }
+    to   { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+@keyframes draw {
+    from { stroke-dasharray: 0 100; }
+    to   { stroke-dasharray: 100 0; }
+}
+
+.animate-fade-in {
+    animation: fade-in 0.3s ease-out forwards;
+}
+
+.animate-draw {
+    stroke-dasharray: 0 100;
+    animation: draw 0.5s ease-out 0.2s forwards;
+}
+
+
 /*
 |--------------------------------------------------------------------------
 | Tailwind cheatsheet — brandfarver og utilities
